@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/dvadz/Restaurant#readme",
   "dependencies": {
-    "express": "^4.17.0"
+    "express": "^4.17.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.6"
   }
 }
