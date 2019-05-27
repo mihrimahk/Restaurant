@@ -1,6 +1,7 @@
 module.exports = function(sequelize, DataTypes){
     var Order_item = sequelize.define("Order_item", {
-        item: DataTypes.STRING  //an item from the menu
+        name: DataTypes.STRING,
+        quantity: DataTypes.INTEGER
     });
 
     Order_item.associate = function(models){
@@ -11,7 +12,7 @@ module.exports = function(sequelize, DataTypes){
             }
         });
 
-        Order_item.hasMany(models.Menu,{
+        Order_item.hasMany(models.Dish,{
             onDelete: "CASCADE"
         });
     }
