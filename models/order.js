@@ -24,10 +24,6 @@ module.exports = function(sequelize, DataTypes){
         Order.hasMany(models.Order_item, {
             onDelete: "CASCADE"
         });
-
-        Order.hasMany(models.Order_type, {
-            onDelete: "CASCADE"
-        });
     }
 
     return Order;
