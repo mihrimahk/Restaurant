@@ -5,15 +5,10 @@ module.exports = function(sequelize, DataTypes){
 
     Order_type.associate = function(models){
         
-        Order_type.belongsTo(models.Order, {
-            onDelete: "CASCADE",
-            foreignKey: {
-                allowNull: false
-            }
+        Order_type.hasMany(models.Dish,{
+            onDelete: "CASCADE"
         });
     }
 
     return Order_type;
 }
-
-// name values: dine-in, takeout, delivery, pickup

@@ -4,11 +4,9 @@ module.exports = function(sequelize, DataTypes){
     });
 
     Dish_type.associate = function(models){
-        Dish_type.belongsTo(models.Dish,{
-            onDelete: "CASCADE",
-            foreignKey: {
-                allowNull: false
-            }
+
+        Dish_type.hasMany(models.Dish,{
+            onDelete: "CASCADE"
         });
     }
 
