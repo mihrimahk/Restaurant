@@ -5,11 +5,8 @@ module.exports = function(sequelize, DataTypes){
 
     Role.associate = function(models){
 
-        Role.belongsTo(models.User, {
-            onDelete: "CASCADE",
-            foreignKey: {
-                allowNull: false
-            }
+        Role.hasMany(models.User, {
+            onDelete: "CASCADE"
         });
     }
 

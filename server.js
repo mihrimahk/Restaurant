@@ -4,14 +4,18 @@ var PORT = process.env.PORT || 3000;
 
 var app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.get("/", function(req, res){
-    res.send("WELCOME TO THE RESTAURANT");
-});
+// Routes
+require("./routes/api-dish")(app);
 
-app.post("/api/dish/add", function(req, res){
-    res.send("You tried to add a dish")
+// Function that will populate database with dummy data
+var seed = require("./seeder/seed");
+app.get("/insert_dummy_data", function(req, res){
+    seed();
+    res.end();
 });
 
 db.sequelize.sync({

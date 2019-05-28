@@ -8,12 +8,15 @@ module.exports = function(sequelize, DataTypes){
 
     User.associate = function(models){
         
-        User.hasMany(models.Order, {
-            onDelete: "CASCADE"
+        User.belongsTo(models.Role, {
+            onDelete: "CASCADE",
+            foreignKey: {
+                allowNull: false
+            }
         });
 
-        User.hasMany(models.Role,{
-            onDelete: "CASCADE"
+        User.hasMany(models.Order, {
+            onDelete: "CASCADE",
         });
     };
 
