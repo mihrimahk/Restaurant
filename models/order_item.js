@@ -19,9 +19,6 @@ module.exports = function(sequelize, DataTypes){
             }
         });
 
-        Order_item.hasMany(models.Dish,{
-            onDelete: "CASCADE"
-        });
     }
 
     return Order_item;

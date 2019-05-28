@@ -15,10 +15,6 @@ module.exports = function(sequelize, DataTypes){
                 allowNull: false
             }
         });
-        
-        // Dish.hasMany(models.Dish_type, {
-        //     onDelete: "CASCADE"
-        // });
     }
 
     return Dish;
