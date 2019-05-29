@@ -15,14 +15,7 @@ require("./routes/api-dish")(app);
 var seed = require("./seeder/seed");
 app.get("/insert_dummy_data", function(req, res){
     seed();
-    // Call databsae here and retrieve json
-    const obj = db.Dish_type.findAll({
-        include: [ db.Dish ]
-    }).then(function(dishTypes){
-        console.log('Dish Found is: ' + dishTypes.name);
-        res.send(dishTypes);
-        res.end()
-    });
+    res.end()
 });
 
 db.sequelize.sync({
