@@ -10,10 +10,14 @@ app.use(express.static("public"));
 
 // Routes
 require("./routes/api-dish")(app);
+require("./routes/api-order-item")(app);
+require("./routes/api-order")(app);
+require("./routes/api-user")(app);
 
 // Function that will populate database with dummy data
 var seed = require("./seeder/seed");
 app.get("/insert_dummy_data", function(req, res){
+    console.log("INSERTING DUMMY DATA");
     seed();
     res.end()
 });
