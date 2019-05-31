@@ -128,12 +128,6 @@ module.exports = function() {
         photo: "toobigtoshow" , 
         DishTypeId: "3"
     });
-    
-    // Order_type
-    db.Order_type.create({ name: "dine-in" });
-    db.Order_type.create({ name: "takeout" });
-    db.Order_type.create({ name: "pickup" });
-    db.Order_type.create({ name: "delivery" });
 
     // Order
     db.Order.create({ order_number: 1, isFulfilled: true, UserId: 3, OrderTypeId: 1 });
