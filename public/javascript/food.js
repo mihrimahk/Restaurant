@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     // Setup click event for the "Order Now"
     $(document).on("click", "#order-now", function(){
-        console.log("ORDER NOW");
+        orderNow();
     });
 });
 
@@ -94,36 +94,6 @@ function displayMenu(){
 
 }
 
-
-
-const orderedItems = {};
-totalAmount = 0;
-
-function order(id, price){
-        let val = $("#"+id).val();
-        orderedItems[id] = { qty: val, price: price, total: val * price};
-
-        Object.keys(orderedItems).forEach(item => {
-            console.log("Item: " + item + 
-            " QTY: " + 
-            orderedItems[item].qty + " Price: " + orderedItems[item].price
-            + " Total: " + orderedItems[item].total);
-        })
-        calculateTotal();
-}
-
-function calculateTotal(){
-    let totalAmount = 0.00;
-    Object.keys(orderedItems).forEach(item => {
-        console.log(orderedItems[item].total);
-        totalAmount += orderedItems[item].total;
-    });
-    console.log('TOTAL: ' + totalAmount);
-    $("#totalAmount").text("$ " + totalAmount.toFixed(2));
-}
-
-
-
 function addToCart(event){
     // this is the index of the 'add to cart' button
     const button_index =  parseInt(event.target.dataset.foodId);
@@ -177,4 +147,39 @@ function addToCart(event){
 
     // Post the Total Cost to the bottom of the screen
     $("#totalAmount").text(`$${totalCost}`);
+}
+
+function orderNow(){
+    
+    // Check that the order list in not empty
+    if(restaurant.Order.Order_items.length){
+        console.log("SENDING ORDER");
+
+        $.ajax({
+            url: "/api/order",
+            method: "POST",
+            data: restaurant.Order
+        })
+        .then(function(data){
+            console.log("++++++++ Order was accepted ++++++++");
+            console.log(data);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    
+    }else{
+        console.log("Please select from the menu then try again");
+    }
+
+
+    // $.ajax({
+    //     url: "/api/dish",
+    //     method: "GET"
+    // })
+    // .then(function(response){
+    //     restaurant.menu = response;
+    //     displayMenu();
+    // });
+
 }
