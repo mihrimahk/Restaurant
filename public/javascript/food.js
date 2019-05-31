@@ -59,8 +59,7 @@ function displayMenu(){
         }
     
         var item = `<div class="row align-items-center menu-item">
-            <div class="col-md-3 food-image">
-            <!-- TODO: -->
+           <!-- <div class="col-md-3 food-image">
             <img 
                 data-src="https://res.cloudinary.com/pictureelement/image/upload/q_auto,f_auto,c_scale,w_150/v1537896174/website-template-3/breakfasts.jpg"
                 data-srcset="
@@ -68,9 +67,9 @@ function displayMenu(){
                 https://res.cloudinary.com/pictureelement/image/upload/q_auto,f_auto,c_scale,w_300/v1537896174/website-template-3/breakfasts.jpg 2x"
                 alt="Breakfast"
                 class="rounded-circle lazyload">
-            </div>
+            </div> -->
         
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <h3 class="food-title">
                 <span class="food-name">${item.name}</span>
                 <span class="food-price float-right">${item.price}  <div class="form-group">
