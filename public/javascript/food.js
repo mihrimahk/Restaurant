@@ -101,6 +101,9 @@ function addToCart(event){
     const dropdown_name = "dropdown" + button_index;
     const quantity = document.getElementById(dropdown_name).value;
 
+    //Once item is placed in the cart transition from blue to orange
+    event.target.classList.remove("btn-primary");
+   event.target.classList.add("btn-warning")
 
     //check if the item is already the order
     const alreadyInTheOrderIndex = restaurant.Order.Order_items.findIndex(function(Order_item){
@@ -162,6 +165,7 @@ function orderNow(){
         .then(function(data){
             console.log("++++++++ Order was accepted ++++++++");
             console.log(data);
+            $("#Order_Recieved").fadeIn();
         })
         .catch(function(err){
             console.log(err);
