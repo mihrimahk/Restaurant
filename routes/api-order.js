@@ -5,13 +5,37 @@ module.exports = function(app){
     //Create Order
     app.post("/api/order", function(req, res){
         console.log(`***** ORDER: CREATE *****`);
-        // TODO: save the order
-        res.send("ORDER: Create is under construction");
 
-        // UserID
-        // OrderTypeId
-        
-        // quantity, DishID , OrderTypeId
+        // Create a new Order
+        db.Order.create({
+            UserId: req.body.UserId,
+            isFulfilled: false
+        })
+        .then(function(data){
+            
+            // create individual order_item entries in the db
+            req.body.Order_items.forEach(function(item){
+                item.OrderId = data.id;
+                console.log(data.id);
+                console.log(item);
+
+                db.Order_item.create(item)
+                .then(function(data){
+                    console.log(data)
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+            });
+
+            // redirect to return the order 
+            res.redirect("/api/order/" + data.id);
+        })
+        .catch(function(err){
+            console.log(err);
+            res.status(500).end();
+        });
+
     });
 
     // Read all Orders
